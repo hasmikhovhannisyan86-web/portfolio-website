@@ -30,6 +30,7 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
+    overflow-x: hidden;
 }
 
 body {
@@ -38,6 +39,7 @@ body {
     line-height: 1.7;
     background: var(--white);
     overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
 }
 
 .container {
@@ -202,6 +204,7 @@ body {
     position: absolute;
     opacity: 0.06;
     fill: var(--primary);
+    pointer-events: none;
 }
 
 .hero-deco-1 {
@@ -887,6 +890,8 @@ body {
     color: var(--gray-900);
     font-weight: 500;
     font-size: 0.88rem;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 /* ===== FOOTER ===== */
@@ -917,6 +922,7 @@ body {
         gap: 4px;
         box-shadow: var(--shadow-lg);
         transition: right 0.3s ease;
+        z-index: 1000;
     }
 
     .nav-links.active {
@@ -933,6 +939,31 @@ body {
         z-index: 1001;
     }
 
+    .hero-deco-1 {
+        width: 250px;
+        height: 250px;
+    }
+
+    .hero-deco-2 {
+        width: 180px;
+        height: 180px;
+    }
+
+    .hero-shape-1 {
+        width: 300px;
+        height: 300px;
+    }
+
+    .hero-shape-2 {
+        width: 250px;
+        height: 250px;
+    }
+
+    .hero-shape-3 {
+        width: 180px;
+        height: 180px;
+    }
+
     .about-content {
         grid-template-columns: 1fr;
         gap: 32px;
@@ -946,6 +977,11 @@ body {
     .highlight-card {
         flex: 1;
         min-width: 0;
+        padding: 16px 12px;
+    }
+
+    .highlight-number {
+        font-size: 1.6rem;
     }
 
     .skills-grid-3 {
@@ -955,6 +991,10 @@ body {
 
     .contact-cards {
         grid-template-columns: 1fr;
+    }
+
+    .contact-card {
+        padding: 24px 16px;
     }
 
     .timeline {
@@ -983,8 +1023,25 @@ body {
         font-size: 1.8rem;
     }
 
+    .section-header {
+        margin-bottom: 40px;
+    }
+
     .about-lead {
         font-size: 1.25rem;
+    }
+
+    .hero-name {
+        font-size: 2.4rem;
+    }
+
+    .hero-tagline {
+        font-size: 1rem;
+    }
+
+    .btn {
+        padding: 12px 24px;
+        font-size: 0.9rem;
     }
 }
 
@@ -995,5 +1052,14 @@ body {
 
     .languages-grid {
         grid-template-columns: 1fr;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container {
+        padding: 0 16px;
     }
 }
