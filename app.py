@@ -1,6 +1,25 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, make_response, jsonify
 
 app = Flask(__name__)
+
+# Cache static files for 1 year (browser caching)
+app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 31536000
+
+
+@app.after_request
+def add_cache_headers(response):
+    """Add caching headers to speed up repeat visits."""
+    if "text/css" in response.content_type or "javascript" in response.content_type:
+        response.headers["Cache-Control"] = "public, max-age=31536000"
+    elif "text/html" in response.content_type:
+        response.headers["Cache-Control"] = "public, max-age=300"
+    return response
+
+
+@app.route("/health")
+def health():
+    """Health check endpoint for keep-alive pings."""
+    return jsonify(status="ok"), 200
 
 
 @app.route("/")
