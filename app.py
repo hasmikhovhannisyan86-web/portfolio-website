@@ -1,4 +1,4 @@
-from flask import Flask, render_template, make_response, jsonify
+from flask import Flask, render_template, make_response, jsonify, send_from_directory
 
 app = Flask(__name__)
 
@@ -20,6 +20,11 @@ def add_cache_headers(response):
 def health():
     """Health check endpoint for keep-alive pings."""
     return jsonify(status="ok"), 200
+
+
+@app.route("/hackathon-certificate.png")
+def hackathon_certificate():
+    return send_from_directory("static/img", "hackathon-certificate.png")
 
 
 @app.route("/")
